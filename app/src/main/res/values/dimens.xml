@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_title_top">56dp</dimen>
+    <dimen name="margin_top_rv">62dp</dimen>
+
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_big">24dp</dimen>
+    <dimen name="margin_big_2">32dp</dimen>
+    <dimen name="margin_big_3">48dp</dimen>
+
+    <dimen name="none">0dp</dimen>
+    <dimen name="item_height">220dp</dimen>
+    <dimen name="space_large">120dp</dimen>
+
+    <dimen name="thumbnail_height">180dp</dimen>
+
+    //font
+    <dimen name="font_size_title">96sp</dimen>
+    <dimen name="font_size_big">20sp</dimen>
+    <dimen name="font_size_medium">16sp</dimen>
+    <dimen name="font_size_error">54sp</dimen>
+</resources>

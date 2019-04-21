@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="pham.honestbee.exchangerate.exchange.MainViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".exchange.MainActivity">
+
+        <Spinner
+            android:id="@+id/base_rate_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:gravity="center_vertical"
+            android:paddingStart="4dp"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:selectedValue="@={viewModel.currentBase}"
+            app:stringEntries="@{viewModel.baseRateNames}" />
+
+        <Spinner
+            android:id="@+id/target_currency_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:gravity="center_vertical"
+            android:paddingStart="4dp"
+            android:textSize="16sp"
+            app:entries="@{viewModel.currentRateMap}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:selectedValue="@={viewModel.currentTarget}" />
+
+        <ImageView
+            android:id="@+id/imageViewLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_loading"
+            android:visibility="@{viewModel.loading == true ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rotation="@{viewModel.loading}"
+            tools:visibility="gone" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/converter"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/font_size_big"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageViewExchangeIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/base_rate_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/base_rate_spinner"
+            app:srcCompat="@drawable/ic_swap_horizontal" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/base_1"
+            android:textColor="@color/color_black"
+            app:layout_constraintEnd_toEndOf="@+id/base_rate_spinner"
+            app:layout_constraintStart_toStartOf="@+id/base_rate_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/base_rate_spinner" />
+
+        <TextView
+            android:id="@+id/textViewTargetRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@={viewModel.currentRate}"
+            android:textColor="@color/color_black"
+            app:layout_constraintEnd_toEndOf="@+id/target_currency_spinner"
+            app:layout_constraintStart_toStartOf="@+id/target_currency_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/target_currency_spinner"
+            tools:text="1.2" />
+
+        <TextView
+            android:id="@+id/textViewAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/amount"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/font_size_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <EditText
+            android:id="@+id/editTextAmount"
+            android:layout_width="@dimen/none"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rounded_corner_button"
+            android:hint="@string/base_1"
+            android:inputType="numberDecimal"
+            android:padding="@dimen/margin_small"
+            android:text="@={viewModel.currentAmount}"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewAmount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewAmount"
+            app:layout_constraintTop_toTopOf="@+id/textViewAmount" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
